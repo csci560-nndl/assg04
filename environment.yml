@@ -12,7 +12,12 @@ dependencies:
 - statsmodels
 - jupyter
 - jupyterlab
-- twisted
 - h5py
 - pydot
 - mlxtend
+- numdifftools
+- pip
+- pip:
+  - tensorflow # if no gpu
+  - tensorboard
+#  - tensorflow[and-cuda] # if want gpu support

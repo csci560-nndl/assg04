@@ -5,7 +5,6 @@ import unittest
 from tensorflow import keras
 import keras.src
 from tensorflow.keras import layers
-#from twisted.trial import unittest
 from unittest.mock import patch
 from io import StringIO
 #from assg_tasks import EveryNEpochs
