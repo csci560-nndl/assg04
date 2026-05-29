@@ -1,15 +1,16 @@
 {
+    "python.testing.cwd": "./src",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "src",
+        ".",
         "-p",
         "test_*.py"
     ],
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true,
-    "python-envs.defaultEnvManager": "ms-python.python:conda",
-    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
     "cSpell.words": [
         "assg",
         "autograded",
@@ -18,6 +19,7 @@
         "checkpointed",
         "crossentropy",
         "cwid",
+        "CWID",
         "Docstrings",
         "doctests",
         "figsize",
@@ -34,6 +36,7 @@
         "unregularized",
         "xlabel",
         "xlim",
-        "ylabel"
+        "ylabel",
+        "ylim"
     ]
 }
