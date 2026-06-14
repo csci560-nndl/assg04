@@ -78,3 +78,34 @@ def plot_history(ax, history_dict, metric_key):
     #ax.set_xticks(epochs)
     ax.grid()
     ax.legend();
+
+class KerasClassifierWrapper:
+    """Apparently mlxtend requires that the classifier return integer predictions, not
+    floats.  Keras trained models return a float between 0.0 or 1.0 when predict is called
+    (e.g. more like predict probability), instead of thresholding the class to either 0 or 1
+    for a binary classification like we are doing here.  So need to wrap the Keras classifier
+    model predict function to return what is expected by the mlxtend plot_decision_regions()
+    function.
+
+    TODO: probably should move this into utilities for assignments and add in description of
+    using this for the mlxtend plot_decision_regions() function.
+    """
+    def __init__(self, model):
+        self.model = model
+        
+    def predict(self, X):
+        """Wrap the predict function to threshoold classification results to
+        integer 0.0 or 1.0 results as expected by the mlxtend decision region plot
+        functions.
+
+        Parameters
+        ----------
+        self - This is a member method of the wrapper class, so pass in reference to self
+          as first parameter
+        X - The data to make predictions for.
+        """
+        # get the original predictions that are floats from 0.0 to 1.0 from the original model
+        y_pred = self.model.predict(X, verbose=0)
+
+        # threshold and reuturn integer 0/1 binary class results
+        return (y_pred > 0.5).astype(np.int32).ravel()
